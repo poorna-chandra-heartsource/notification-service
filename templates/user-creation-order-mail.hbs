@@ -1,0 +1,55 @@
+<p>Hi {{name}},</p>
+
+<p>Thank you for confirming your inquiry. The agency will reach out to you directly to process your request. </p>
+<p>They will manage the shipment delivery and payment collection for the consignment.</p>
+<p>Please note that we are not responsible for any issues, including but not limited to delays, damages, or legal concerns that may arise from the shipment, payments, or the use of the products.</p>
+<p>Here are your inquiry details:</p>
+
+<table style="border-collapse: collapse; width: 60%; border: 1px solid black;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; text-align: left; border: 1px solid black;">Name</th>
+      <th style="padding: 10px; text-align: left; border: 1px solid black;">Quantity</th>
+      <th style="padding: 10px; text-align: left; border: 1px solid black;">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each order.orderItems}}
+      <tr>
+        <td style="padding: 10px; border: 1px solid black;">{{this.product}}</td>
+        <td style="padding: 10px; border: 1px solid black;">{{this.quantity}}</td>
+        <td style="padding: 10px; border: 1px solid black;">&#8377; {{this.price}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<p><b>Total Price: </b>&#8377; {{order.total_price}}</p>
+
+<br/>
+<h3>Shipping Address:</h3>
+<p>{{shippingAddress.addressLine1}}</p>
+{{#if shippingAddress.addressLine2}}<p>{{shippingAddress.addressLine2}}</p>{{/if}}
+
+{{#if shippingAddress.landmark}}
+  <p>{{shippingAddress.landmark}}, {{shippingAddress.city}}, {{shippingAddress.state}}, {{shippingAddress.pincode}}</p>
+{{else}}
+  <p>{{shippingAddress.city}}, {{shippingAddress.state}}, {{shippingAddress.pincode}}</p>
+{{/if}}
+
+<br/>
+<p>For delivery details, you may contact the manufacturer directly at:</p>
+
+<p>Phone: 98430 88828 / 94433 88825</p>
+
+<p>Email: eyeganesh@gmail.com</p>
+
+<br/>
+<p>Please note that shipment delivery is subject to jurisdictional regulations.</p>
+
+<p>Thank you on behalf of Gopi Agencies.</p>
+
+{{#if passwordResetLink}}
+<p>If you are interested in creating a profile, please click the link below to create your password using the email provided:</p>
+<a href="{{passwordResetLink}}">Set your password</a>
+{{/if}}

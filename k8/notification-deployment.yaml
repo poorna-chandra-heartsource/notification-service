@@ -1,0 +1,47 @@
+# notification-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-app-deployment
+  labels:
+    app: notification-app
+spec:
+  replicas: 2  # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: notification-app
+  template:
+    metadata:
+      labels:
+        app: notification-app
+    spec:
+      containers:
+      - name: notification-container
+        image: your-docker-repo/notification-app:latest  # Replace with your Docker image
+        ports:
+        - containerPort: 3000
+        envFrom:
+        - configMapRef:
+            name: notification-configmap-dev
+        - secretRef:
+            name: notification-secret-dev
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+        readinessProbe:
+          httpGet:
+            path: "/health"
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: "/health"
+            port: 3000
+          initialDelaySeconds: 15
+          periodSeconds: 20
+      restartPolicy: Always
