@@ -10,10 +10,11 @@ import { EmailController } from './email.controller';
     BullModule.registerQueue({
       name: 'emailQueue',
       redis: {
-        host: 'localhost',
-        port: 6379,
+        host: process.env.REDIS_HOST || 'localhost',
+        port: parseInt(process.env.REDIS_PORT, 10) || 6379,
       },
-    }),
+    })  
+    
   ],
   providers: [EmailService, EmailProcessor, EmailQueueService],
   controllers: [EmailController],

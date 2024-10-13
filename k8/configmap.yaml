@@ -5,18 +5,20 @@ metadata:
 data:
   NODE_ENV: "local"
   APP_NAME: "NestJS"
-  APP_DESCRIPTION: "Core API"
-  APP_PORT: "3005"
-  APP_HOST: "http://localhost:3005"
-  APP_BASE_URL: "http://localhost:3005"
+  APP_DESCRIPTION: "Notification Service"
+  APP_PORT: "3002"  # Updated Port
+  APP_HOST: "http://localhost:3002"  # Updated Port
+  APP_BASE_URL: "http://localhost:3002"  # Updated Port
   APP_VERSION: "1.0.0"
   APP_SWAGGER_PATH: "api-docs"
-  CORS_ORIGIN: "http://localhost:4200"
+  CORS_ORIGIN: "http://localhost:3001"
   CORS_CREDENTIALS: "true"
   CORS_EXPOSED_HEADERS: "Accept,authorization,Authentication,Content-Type,If-None-Match,SourceType"
   LOGGER_LEVEL: "info"
   LOGGER_FILE_NAME: "./logs/logs.log"
   SMTP_HOST: "smtp.hostinger.com"
   SMTP_PORT: "587"
+  SMTP_USER: "chandra@heartsource.tech"
   FROM_EMAIL: "chandra@heartsource.tech"
-  REDIS_URL: "redis://localhost:6379"
+  REDIS_HOST: "redis"
+  REDIS_PORT: "6379"

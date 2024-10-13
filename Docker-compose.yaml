@@ -2,34 +2,28 @@ version: '3.8'
 
 services:
   notification-app:
-    image: your-docker-repo/notification-app:latest  # Replace with your Docker image
+    image: poornagollakoti/notification-app:1.0.2
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        ENV_FILE: .env.dev.properties
     ports:
-      - "3000:3000"
-    environment:
-      NODE_ENV: production
-      NOTIFICATION_DB_URL: "your-database-url"  # Replace with actual DB URL
+      - "3002:3000"
     restart: always
+    depends_on:
+      - redis
+    environment:
+      REDIS_HOST: redis  # Refer to Redis service
+      REDIS_PORT: 6379
     healthcheck:
       test: ["CMD-SHELL", "curl --fail http://localhost:3000/health || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 3
-    depends_on:
-      - database
 
-  database:
-    image: postgres:13  # Replace with your database image if needed
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: notification_db
-    volumes:
-      - db-data:/var/lib/postgresql/data
+  redis:
+    image: redis:latest
     ports:
-      - "5432:5432"
-
-volumes:
-  db-data:
+      - "6379:6379"
+    restart: always

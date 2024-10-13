@@ -1,6 +1,5 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import mongoConfig from './config/mongodb.config';
 import appConfig from './config/app.config';
 import { swaggerSetUp } from './setup';
 import { corsMiddleware, securityMiddleware } from './middlewares';

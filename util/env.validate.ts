@@ -51,13 +51,7 @@ class EnvironmentVairables {
   
     @IsString()
     CORS_EXPOSED_HEADERS: string;
-  
-    // @IsString()
-    // MONGODB_URI: string;
-  
-    // @IsString()
-    // MONGO_SSL_CRT_PATH: string;
-  
+   
     @IsEnum(Logger)
     LOGGER_LEVEL: string;
 }

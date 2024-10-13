@@ -1,8 +1,6 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { MongooseModule } from '@nestjs/mongoose';
-import mongodbConfig from './config/mongodb.config';
 import { XssMiddleware } from './middlewares/xss.middleware';
 import { LoggerMiddleware } from './middlewares/logger.middlware';
 import { ConfigModule } from '@nestjs/config';
@@ -26,10 +24,8 @@ import { EmailModule } from './modules/email/email.module';
     ConfigModule.forRoot({
       isGlobal: true,
       cache: true,
-      load: [appConfig, corsConfig, loggerConfig, swaggerConfig, mailConfig],
-      validate,
+      load: [appConfig, corsConfig, loggerConfig, swaggerConfig, mailConfig]
     }),
-    // MongooseModule.forRoot(mongodbConfig().uri, mongodbConfig().options),
     HealthModule,
     EmailModule
   ],
