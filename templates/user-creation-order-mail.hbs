@@ -1,8 +1,7 @@
 <p>Hi {{name}},</p>
 
-<p>Thank you for confirming your inquiry. The suppliers will reach out to you directly to process your request. They will manage the shipment delivery and payment collection for the consignment.</p>
-<p>Please note that this website is not responsible for any issues, including but not limited to delays, damages, or legal concerns that may arise from the shipment, payments, or the use of the products.</p>
-<br/>
+<p>Thank you for confirming your inquiry.</p>
+
 <p>Here are your inquiry details:</p>
 
 <table style="border-collapse: collapse; width: 75%; border: 1px solid black;">
@@ -24,10 +23,10 @@
   </tbody>
 </table>
 
-<p><b>Total Price: &#8377; {{order.total_price}}</b></p>
-<i>(Additional Shipping Charges applicable)</i>
+<p><b>Budgeted Price: &#8377; {{order.total_price}}</b></p>
+
 <br/>
-<h3>Shipping Address:</h3>
+<h4>Customer Address:</h4>
 <p>{{shippingAddress.addressLine1}}</p>
 {{#if shippingAddress.addressLine2}}<p>{{shippingAddress.addressLine2}}</p>{{/if}}
 
@@ -38,20 +37,10 @@
 {{/if}}
 
 <br/>
-<p>For delivery details, you may contact the manufacturer directly at:</p>
-
-<p>Phone: 98430 88828 / 94433 88825</p>
-
-<p>Email: eyeganesh@gmail.com</p>
-
-<br/>
-<p>Please be informed that shipment delivery is subject to jurisdictional regulations.</p>
-
-<br/>
 {{#if passwordResetLink}}
 <p>If you are interested in creating a profile in this website, please click the link below to set your password using your <b>email id</b> provided for this inquiry as the <b>login id</b>.</p>
 <a href="{{passwordResetLink}}">Set your password</a>
 {{/if}}
 
 <br/>
-<p>Thank you on behalf of Gopi Agencies!</p>
+<p>Thank you</p>
