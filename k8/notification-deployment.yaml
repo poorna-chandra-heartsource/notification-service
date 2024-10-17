@@ -16,9 +16,9 @@ spec:
     spec:
       containers:
       - name: notification-container
-        image: poornagollakoti/notification-app:1.0.2
+        image: diwali.azurecr.io/notification-app:1.0.4
         ports:
-        - containerPort: 3002  # Updated Port
+        - containerPort: 3000   # Should match the internal application port
         envFrom:
         - configMapRef:
             name: notification-configmap-dev
@@ -31,18 +31,6 @@ spec:
           requests:
             memory: "128Mi"
             cpu: "250m"
-        readinessProbe:
-          httpGet:
-            path: "/health"
-            port: 3002  # Updated Port
-          initialDelaySeconds: 10
-          periodSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: "/health"
-            port: 3002  # Updated Port
-          initialDelaySeconds: 15
-          periodSeconds: 20
       restartPolicy: Always
 ---
 apiVersion: v1
@@ -57,5 +45,5 @@ spec:
     app: notification-app
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 3002  # Updated Port
+      port: 3002 # Expose this service on port 3002 externally
+      targetPort: 3000 # Forward traffic to port 3000 inside the container
