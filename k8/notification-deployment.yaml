@@ -24,13 +24,13 @@ spec:
             name: notification-configmap-dev
         - secretRef:
             name: notification-secret-dev
-        resources:
-          limits:
-            memory: "256Mi"
-            cpu: "500m"
-          requests:
-            memory: "128Mi"
-            cpu: "250m"
+        # resources:
+        #   limits:
+        #     memory: "256Mi"
+        #     cpu: "500m"
+        #   requests:
+        #     memory: "128Mi"
+        #     cpu: "250m"
       restartPolicy: Always
 ---
 apiVersion: v1
@@ -40,7 +40,7 @@ metadata:
   labels:
     app: notification-app
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     app: notification-app
   ports:
