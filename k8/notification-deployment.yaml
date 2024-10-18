@@ -46,4 +46,4 @@ spec:
   ports:
     - protocol: TCP
       port: 3002 # Expose this service on port 3002 externally
-      targetPort: 3000 # Forward traffic to port 3000 inside the container
+      targetPort: 3002 # Forward traffic to port 3000 inside the container
