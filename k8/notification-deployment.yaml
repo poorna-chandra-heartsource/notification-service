@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: notification-container
-        image: diwali.azurecr.io/notification-app:1.0.4
+        image: diwali.azurecr.io/notification-app:1.0.5
         ports:
         - containerPort: 3000   # Should match the internal application port
         envFrom:
