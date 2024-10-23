@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   notification-app:
-    image: diwali.azurecr.io/notification-app:1.0.5
+    image: diwali.azurecr.io/notification-app:1.0.6
     build:
       context: .
       dockerfile: Dockerfile
